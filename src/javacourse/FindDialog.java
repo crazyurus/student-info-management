@@ -35,8 +35,9 @@ public class FindDialog extends BaseWindow implements ActionListener {
         dialog = (Dialog) window;
 
         /* 初始化对话框 */
-        dialog.setBounds(100, 100, 260, 120);
+        dialog.setSize(260, 120);
         dialog.setLayout(new GridLayout(2, 2));
+        this.init();
 
         /* 添加控件 */
         dialog.add(label);

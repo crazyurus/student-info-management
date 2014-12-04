@@ -24,7 +24,7 @@ public final class MainFrame extends BaseWindow implements ActionListener {
     private final Menu[] m_Menu = new Menu[menuInfo.length];
     private final MenuItem[] m_MenuItem = new MenuItem[11];
     public final DefaultTableModel table;
-    public final JTable m_Table;
+    private final JTable m_Table;
 
     /**
      * 构造函数
@@ -32,9 +32,17 @@ public final class MainFrame extends BaseWindow implements ActionListener {
     @SuppressWarnings("")
     public MainFrame() {
 
-        window = new Frame("学生信息管理系统");
-        frame = (Frame) window;
+        window = new JFrame("学生信息管理系统");
+        frame = (JFrame) window;
         this.table = new DefaultTableModel(null, tableColumn) {
+
+            /**
+             * 控制表格是否可编辑
+             *
+             * @param row 行索引
+             * @param column 列索引
+             * @return 是否可编辑
+             */
             @Override
             public boolean isCellEditable(int row, int column) {
                 return false;
@@ -43,15 +51,14 @@ public final class MainFrame extends BaseWindow implements ActionListener {
         m_Table = new JTable(table);
 
         /* 控件对象初始化 */
-        frame.setFont(new Font("Microsoft YaHei", Font.PLAIN, 12));
         this.initMenu();
         this.initTable();
 
         /* 主窗体位置、字体设置 */
         frame.setSize(720, 540);
-        frame.setLocation(100, 100);
         frame.setLayout(new GridLayout(1, 1));
         frame.setMenuBar(m_MenuBar);
+        this.init();
 
         /* 添加事件监听 */
         frame.addWindowListener(this);
@@ -95,6 +102,11 @@ public final class MainFrame extends BaseWindow implements ActionListener {
         frame.add(jsc);
     }
 
+    /**
+     * 判断表格是否为空
+     *
+     * @return 是否为空
+     */
     private boolean isEmpty() {
         return table.getRowCount() == 0;
     }

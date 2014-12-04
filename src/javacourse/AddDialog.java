@@ -24,6 +24,7 @@ public class AddDialog extends BaseWindow implements ActionListener {
     private final JButton[] btn = new JButton[btnText.length];
     private final JRadioButton[] radio = new JRadioButton[radioText.length];
     private final JComboBox combo = new JComboBox(college);
+    private final ButtonGroup group = new ButtonGroup();
 
     /**
      * 构造函数
@@ -39,8 +40,9 @@ public class AddDialog extends BaseWindow implements ActionListener {
         dialog = (Dialog) window;
 
         /* 初始化对话框 */
-        dialog.setBounds(100, 100, 400, 240);
+        dialog.setSize(400, 240);
         dialog.setLayout(new GridLayout(6, 1));
+        this.init();
 
         /* 添加控件 */
         this.addLabel();
@@ -79,7 +81,6 @@ public class AddDialog extends BaseWindow implements ActionListener {
      * 添加单选框
      */
     private void addRadio() {
-        ButtonGroup group = new ButtonGroup();
         JPanel radioPanel = new JPanel();
         JPanel labelPanel = new JPanel();
         radioPanel.setLayout(new GridLayout(1, 2));
@@ -154,7 +155,8 @@ public class AddDialog extends BaseWindow implements ActionListener {
         for (JTextField t : text) {
             t.setText("");
         }
-        radio[0].setSelected(true);
+        group.clearSelection();
+        combo.setSelectedIndex(0);
     }
 
     /**

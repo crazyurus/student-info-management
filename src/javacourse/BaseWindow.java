@@ -11,6 +11,11 @@ abstract public class BaseWindow extends WindowAdapter implements ActionListener
 
     protected Window window;
     
+    public void init() {
+        window.setLocationRelativeTo(null);
+        window.setFont(new Font("Microsoft YaHei", Font.PLAIN, 12));
+    }
+    
     /**
      * ÏÔÊ¾Ö÷´°Ìå
      */
