@@ -17,7 +17,7 @@ public final class MainFrame extends BaseWindow implements ActionListener {
 
     private final String[] menuInfo = {"功能(F)", "关于(A)"};
     private final String[][] menuItemInfo = {{"加载(L)", "保存(S)", "-", "添加学生(A)", "删除(D)", "刷新(R)", "查找(F)", "-", "退出(E)"}, {"帮助(H)", "关于(A)"}};
-    private final String[] tableColumn = {"序号","学号", "姓名", "性别", "手机", "E-mail", "学院"};
+    private final String[] tableColumn = {"序号","学号", "姓名", "性别","年龄","手机", "E-mail", "学院"};
 
     public final JFrame frame;
     private final MenuBar m_MenuBar = new MenuBar();
