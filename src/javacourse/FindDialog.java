@@ -14,7 +14,7 @@ public class FindDialog extends BaseWindow implements ActionListener {
 
     private final String[] btnText = {"查找", "关闭"};
 
-    private final Dialog dialog;
+    private final JDialog dialog;
     private final MainFrame parent;
 
     private final JLabel label = new JLabel("请输入学生姓名：");
@@ -26,13 +26,14 @@ public class FindDialog extends BaseWindow implements ActionListener {
      *
      * @param main 主窗体对象
      */
+    @SuppressWarnings("")
     public FindDialog(MainFrame main) {
 
         this.parent = main;
 
         /* 创建对话框 */
-        window = new Dialog(parent.frame, "查找学生信息", false);
-        dialog = (Dialog) window;
+        window = new JDialog(parent.frame, "查找学生信息", false);
+        dialog = (JDialog) window;
 
         /* 初始化对话框 */
         dialog.setSize(260, 120);

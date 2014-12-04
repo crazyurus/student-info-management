@@ -10,12 +10,13 @@ import java.awt.event.*;
 abstract public class BaseWindow extends WindowAdapter implements ActionListener {
 
     protected Window window;
-    
+
     public void init() {
         window.setLocationRelativeTo(null);
         window.setFont(new Font("Microsoft YaHei", Font.PLAIN, 12));
+        window.addWindowListener(this);
     }
-    
+
     /**
      * ÏÔÊ¾Ö÷´°Ìå
      */

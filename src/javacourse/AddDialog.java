@@ -12,12 +12,12 @@ import javax.swing.*;
  */
 public class AddDialog extends BaseWindow implements ActionListener {
 
-    private final String[] labelText = {"姓名", "电话", "E-mail", "学院", "性别"};
+    private final String[] labelText = {"学号","姓名", "电话", "E-mail", "学院", "性别"};
     private final String[] radioText = {"男", "女"};
     private final String[] btnText = {"提交", "重置", "关闭"};
     private final String[] college = {"材料科学与工程学院", "交通学院", "管理学院", "机电工程学院", "能源与动力工程学院", "土木工程与建筑学院", "汽车工程学院", "资源与环境工程学院", "信息工程学院", "计算机科学与技术学院", "自动化学院", "航运学院", "物流工程学院", "理学院", "化学化工与生命科学学院", "经济学院", "艺术与设计学院", "外国语学院", "文法学院", "政治与行政学院", "国际教育学院", "马克思主义学院", "网络/继续教育学院", "职业技术学院", "体育部"};
 
-    private final Dialog dialog;
+    private final JDialog dialog;
     private final MainFrame parent;
 
     private final JTextField[] text = new JTextField[labelText.length - 2];
@@ -31,17 +31,18 @@ public class AddDialog extends BaseWindow implements ActionListener {
      *
      * @param main 主窗体对象
      */
+    @SuppressWarnings("")
     public AddDialog(MainFrame main) {
 
         this.parent = main;
 
         /* 创建对话框 */
-        window = new Dialog(parent.frame, "添加学生信息", false);
-        dialog = (Dialog) window;
+        window = new JDialog(parent.frame, "添加学生信息", false);
+        dialog = (JDialog) window;
 
         /* 初始化对话框 */
-        dialog.setSize(400, 240);
-        dialog.setLayout(new GridLayout(6, 1));
+        dialog.setSize(400, 270);
+        dialog.setLayout(new GridLayout(7, 1));
         this.init();
 
         /* 添加控件 */
@@ -64,6 +65,8 @@ public class AddDialog extends BaseWindow implements ActionListener {
             labelPanel.add(text[i]);
             dialog.add(labelPanel);
         }
+        text[0].setDocument(new NumberLenghtLimited(13));
+        text[2].setDocument(new NumberLenghtLimited(11));
     }
 
     /**
@@ -114,7 +117,6 @@ public class AddDialog extends BaseWindow implements ActionListener {
      */
     @Override
     public void close() {
-        StudentInfoManagment.showStudentInfo(parent.table);
         dialog.dispose();
     }
 
@@ -140,8 +142,8 @@ public class AddDialog extends BaseWindow implements ActionListener {
      */
     private void submitBtnClick() {
         if (isComplete()) {
-            Student s = new Student(text[0].getText(), text[1].getText(), text[2].getText(), combo.getSelectedItem().toString(), radio[1].isSelected());
-            StudentInfoManagment.addStudentInfo(s);
+            Student s = new Student(text[0].getText(), text[1].getText(), text[2].getText(), text[3].getText(), combo.getSelectedItem().toString(), radio[1].isSelected());
+            StudentInfoManagment.addStudentInfo(parent.table,s);
             this.resetBtnClick();
         } else {
             MessageBox.show("填写的信息不完整！");

@@ -55,12 +55,22 @@ public final class StudentInfoManagment {
     }
 
     /**
+     * 删除学生信息
+     *
+     * @param sno 学号
+     */
+    public static void deleteStudentInfo(String sno) {
+        s.remove(sno);
+    }
+
+    /**
      * 清除列表中显示的信息
      *
      * @param l 列表组
      */
     public static void clearStudentInfo(DefaultTableModel l) {
-        for (int i = 0; i < l.getRowCount(); ++i) {
+        int num = l.getRowCount();
+        for (int i = num - 1; i >= 0; --i) {
             l.removeRow(i);
         }
     }
@@ -81,25 +91,27 @@ public final class StudentInfoManagment {
     /**
      * 添加学生信息
      *
+     * @param l 表格控件
      * @param e 学生
      */
-    public static void addStudentInfo(Student e) {
-        s.put(e.getName(), e);
+    public static void addStudentInfo(DefaultTableModel l, Student e) {
+        s.put(e.getSNO(), e);
+        showSingle(l, e);
     }
 
     /**
      * 查找学生信息
      *
      * @param l 表格控件
-     * @param name 姓名
+     * @param sno 学号
      * @return 是否找到
      */
-    public static boolean findStudentInfo(DefaultTableModel l, String name) {
+    public static boolean findStudentInfo(DefaultTableModel l, String sno) {
         boolean isFind = false;
         clearStudentInfo(l);
         for (String key : s.keySet()) {
             Student e = s.get(key);
-            if (name.equals(e.getName())) {
+            if (sno.equals(e.getSNO())) {
                 showSingle(l, e);
                 isFind = true;
             }

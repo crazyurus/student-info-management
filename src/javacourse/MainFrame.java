@@ -16,10 +16,10 @@ import javax.swing.filechooser.*;
 public final class MainFrame extends BaseWindow implements ActionListener {
 
     private final String[] menuInfo = {"功能(F)", "关于(A)"};
-    private final String[][] menuItemInfo = {{"加载(L)", "保存(S)", "-", "添加学生(A)", "删除(&D)", "刷新(R)", "查找(F)", "-", "退出(E)"}, {"帮助(H)", "关于(A)"}};
-    private final String[] tableColumn = {"序号", "姓名", "性别", "手机", "E-mail", "学院"};
+    private final String[][] menuItemInfo = {{"加载(L)", "保存(S)", "-", "添加学生(A)", "删除(D)", "刷新(R)", "查找(F)", "-", "退出(E)"}, {"帮助(H)", "关于(A)"}};
+    private final String[] tableColumn = {"序号","学号", "姓名", "性别", "手机", "E-mail", "学院"};
 
-    public final Frame frame;
+    public final JFrame frame;
     private final MenuBar m_MenuBar = new MenuBar();
     private final Menu[] m_Menu = new Menu[menuInfo.length];
     private final MenuItem[] m_MenuItem = new MenuItem[11];
@@ -58,10 +58,8 @@ public final class MainFrame extends BaseWindow implements ActionListener {
         frame.setSize(720, 540);
         frame.setLayout(new GridLayout(1, 1));
         frame.setMenuBar(m_MenuBar);
+        frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         this.init();
-
-        /* 添加事件监听 */
-        frame.addWindowListener(this);
     }
 
     /**
@@ -189,7 +187,8 @@ public final class MainFrame extends BaseWindow implements ActionListener {
         if (cur == -1) {
             MessageBox.show("没有任何学生信息被选中！");
         } else {
-            if (MessageBox.confirm("确定删除 " + table.getValueAt(cur, 1) + " 的信息？")) {
+            if (MessageBox.confirm("确定删除 " + table.getValueAt(cur, 2) + " 的信息？")) {
+                StudentInfoManagment.deleteStudentInfo(table.getValueAt(cur,1).toString());
                 table.removeRow(cur);
             }
         }
