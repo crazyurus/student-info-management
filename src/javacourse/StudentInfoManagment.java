@@ -103,15 +103,15 @@ public final class StudentInfoManagment {
      * 查找学生信息
      *
      * @param l 表格控件
-     * @param sno 学号
+     * @param name 姓名
      * @return 是否找到
      */
-    public static boolean findStudentInfo(DefaultTableModel l, String sno) {
+    public static boolean findStudentInfo(DefaultTableModel l, String name) {
         boolean isFind = false;
         clearStudentInfo(l);
         for (String key : s.keySet()) {
             Student e = s.get(key);
-            if (sno.equals(e.getSNO())) {
+            if (name.equals(e.getName())) {
                 showSingle(l, e);
                 isFind = true;
             }

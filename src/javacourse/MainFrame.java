@@ -49,6 +49,7 @@ public final class MainFrame extends BaseWindow implements ActionListener {
             }
         };
         m_Table = new JTable(table);
+        m_Table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
         /* 控件对象初始化 */
         this.initMenu();
