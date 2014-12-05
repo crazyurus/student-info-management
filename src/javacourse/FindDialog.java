@@ -20,6 +20,7 @@ public class FindDialog extends BaseWindow implements ActionListener {
     private final JLabel label = new JLabel("请输入学生姓名：");
     private final JTextField text = new JTextField();
     private final JButton[] btn = new JButton[2];
+    private final JProgressBar progress = new JProgressBar();
 
     /**
      * 构造函数
@@ -36,13 +37,16 @@ public class FindDialog extends BaseWindow implements ActionListener {
         dialog = (JDialog) window;
 
         /* 初始化对话框 */
-        dialog.setSize(260, 120);
-        dialog.setLayout(new GridLayout(2, 2));
+        dialog.setSize(260, 135);
+        dialog.setLayout(new GridLayout(3, 1));
         this.init();
 
         /* 添加控件 */
-        dialog.add(label);
-        dialog.add(text);
+        JPanel panel= new JPanel(new GridLayout(1, 2));
+        panel.add(label);
+        panel.add(text);
+        dialog.add(panel);
+        this.initProgress();
         this.addButton();
     }
 
@@ -50,11 +54,22 @@ public class FindDialog extends BaseWindow implements ActionListener {
      * 添加按钮
      */
     private void addButton() {
+        JPanel panel= new JPanel(new GridLayout(1, 2));
         for (int i = 0; i < btn.length; ++i) {
             btn[i] = new JButton(btnText[i]);
-            dialog.add(btn[i]);
+            panel.add(btn[i]);
             btn[i].addActionListener(this);
         }
+        dialog.add(panel);
+    }
+
+    /**
+     * 初始化进度条
+     */
+    private void initProgress() {
+        progress.setOrientation(JProgressBar.HORIZONTAL);
+        progress.setStringPainted(true);
+        dialog.add(progress);
     }
 
     /**
@@ -85,8 +100,8 @@ public class FindDialog extends BaseWindow implements ActionListener {
      */
     private void findBtnClick() {
         if (isComplete()) {
-            if (StudentInfoManagment.findStudentInfo(parent.table, text.getText())) {
-                this.close();
+            if (StudentInfoManagment.findStudentInfo(parent.table, progress,text.getText())) {
+                //this.close();
             } else {
                 MessageBox.show("未找到该学生的信息！");
             }

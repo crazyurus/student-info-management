@@ -2,6 +2,7 @@ package javacourse;
 
 import java.util.*;
 import java.io.*;
+import javax.swing.JProgressBar;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -103,14 +104,20 @@ public final class StudentInfoManagment {
      * 查找学生信息
      *
      * @param l 表格控件
+     * @param p 进度条控件
      * @param name 姓名
      * @return 是否找到
      */
-    public static boolean findStudentInfo(DefaultTableModel l, String name) {
+    public static boolean findStudentInfo(DefaultTableModel l, JProgressBar p, String name) {
         boolean isFind = false;
+        int i = 1;
+        p.setMinimum(0);
+        p.setMaximum(s.keySet().size() + 5);
         clearStudentInfo(l);
+        p.setValue(5);
         for (String key : s.keySet()) {
             Student e = s.get(key);
+            p.setValue(5 + i++);
             if (name.equals(e.getName())) {
                 showSingle(l, e);
                 isFind = true;
