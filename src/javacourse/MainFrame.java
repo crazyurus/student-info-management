@@ -3,6 +3,8 @@ package javacourse;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.*;
 import javax.swing.table.*;
 import javax.swing.filechooser.*;
@@ -17,12 +19,12 @@ public final class MainFrame extends BaseWindow implements ActionListener {
 
     private final String[] menuInfo = {"功能(F)", "关于(A)"};
     private final String[][] menuItemInfo = {{"加载(L)", "保存(S)", "-", "添加学生(A)", "删除(D)", "刷新(R)", "查找(F)", "-", "退出(E)"}, {"帮助(H)", "关于(A)"}};
-    private final String[] tableColumn = {"序号","学号", "姓名", "性别","年龄","手机", "E-mail", "学院"};
+    private final String[] tableColumn = {"序号", "学号", "姓名", "性别", "年龄", "手机", "E-mail", "学院"};
 
     public final JFrame frame;
-    private final MenuBar m_MenuBar = new MenuBar();
-    private final Menu[] m_Menu = new Menu[menuInfo.length];
-    private final MenuItem[] m_MenuItem = new MenuItem[11];
+    private final JMenuBar m_MenuBar = new JMenuBar();
+    private final JMenu[] m_Menu = new JMenu[menuInfo.length];
+    private final JMenuItem[] m_MenuItem = new JMenuItem[11];
     public final DefaultTableModel table;
     private final JTable m_Table;
 
@@ -34,6 +36,11 @@ public final class MainFrame extends BaseWindow implements ActionListener {
 
         window = new JFrame("学生信息管理系统");
         frame = (JFrame) window;
+        try {
+            javax.swing.UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
+            Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
         this.table = new DefaultTableModel(null, tableColumn) {
 
             /**
@@ -59,7 +66,7 @@ public final class MainFrame extends BaseWindow implements ActionListener {
         /* 主窗体位置、字体设置 */
         frame.setSize(720, 540);
         frame.setLayout(new GridLayout(1, 1));
-        frame.setMenuBar(m_MenuBar);
+        frame.setJMenuBar(m_MenuBar);
         frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         this.init();
     }
@@ -70,7 +77,7 @@ public final class MainFrame extends BaseWindow implements ActionListener {
     private void initMenu() {
         int num = menuInfo.length;
         for (int i = 0; i < num; ++i) {
-            m_Menu[i] = new Menu(menuInfo[i]);
+            m_Menu[i] = new JMenu(menuInfo[i]);
             initMenuItem(i);
             m_MenuBar.add(m_Menu[i]);
         }
@@ -88,9 +95,14 @@ public final class MainFrame extends BaseWindow implements ActionListener {
             pre = menuItemInfo[index - 1].length;
         }
         for (int i = pre; i < num + pre; ++i) {
-            m_MenuItem[i] = new MenuItem(menuItemInfo[index][i - pre]);
-            m_Menu[index].add(m_MenuItem[i]);
-            m_MenuItem[i].addActionListener(this);
+            String value = menuItemInfo[index][i - pre];
+            if (value.equals("-")) {
+                m_Menu[index].addSeparator();
+            } else {
+                m_MenuItem[i] = new JMenuItem(value);
+                m_Menu[index].add(m_MenuItem[i]);
+                m_MenuItem[i].addActionListener(this);
+            }
         }
     }
 
@@ -146,7 +158,7 @@ public final class MainFrame extends BaseWindow implements ActionListener {
         } else if (o == m_MenuItem[9]) {  //帮助
             MessageBox.show("暂无帮助", "帮助");
         } else if (o == m_MenuItem[10]) {  //关于
-            MessageBox.msg("学生信息管理系统\nJava程序设计第三次课程实验\n作者：软件zy1201  廖星", "关于");
+            MessageBox.msg("学生信息管理系统\nJava程序设计课程实验\n作者：软件zy1201  廖星", "关于");
         }
     }
 
@@ -190,7 +202,7 @@ public final class MainFrame extends BaseWindow implements ActionListener {
             MessageBox.show("没有任何学生信息被选中！");
         } else {
             if (MessageBox.confirm("确定删除 " + table.getValueAt(cur, 2) + " 的信息？")) {
-                StudentInfoManagment.deleteStudentInfo(table.getValueAt(cur,1).toString());
+                StudentInfoManagment.deleteStudentInfo(table.getValueAt(cur, 1).toString());
                 table.removeRow(cur);
             }
         }
