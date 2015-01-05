@@ -1,4 +1,4 @@
-package javacourse;
+package com.crazyurus.sim;
 
 public class Main {
 

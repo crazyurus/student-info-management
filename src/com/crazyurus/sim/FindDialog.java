@@ -1,4 +1,4 @@
-package javacourse;
+package com.crazyurus.sim;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -27,7 +27,6 @@ public class FindDialog extends BaseWindow implements ActionListener {
      *
      * @param main 主窗体对象
      */
-    @SuppressWarnings("")
     public FindDialog(MainFrame main) {
 
         this.parent = main;

@@ -1,4 +1,4 @@
-package javacourse;
+package com.crazyurus.sim;
 
 import java.awt.*;
 import java.awt.event.*;
