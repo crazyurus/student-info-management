@@ -8,7 +8,7 @@ import javax.swing.*;
  * 查找学生信息对话框类
  *
  * @author Crazy Urus
- * @version 1.0
+ * @version 1.0.5
  */
 public class FindDialog extends BaseWindow implements ActionListener {
 
@@ -41,7 +41,7 @@ public class FindDialog extends BaseWindow implements ActionListener {
         this.init();
 
         /* 添加控件 */
-        JPanel panel= new JPanel(new GridLayout(1, 2));
+        JPanel panel = new JPanel(new GridLayout(1, 2));
         panel.add(label);
         panel.add(text);
         dialog.add(panel);
@@ -53,7 +53,7 @@ public class FindDialog extends BaseWindow implements ActionListener {
      * 添加按钮
      */
     private void addButton() {
-        JPanel panel= new JPanel(new GridLayout(1, 2));
+        JPanel panel = new JPanel(new GridLayout(1, 2));
         for (int i = 0; i < btn.length; ++i) {
             btn[i] = new JButton(btnText[i]);
             panel.add(btn[i]);
@@ -99,7 +99,7 @@ public class FindDialog extends BaseWindow implements ActionListener {
      */
     private void findBtnClick() {
         if (isComplete()) {
-            if (StudentInfoManagment.findStudentInfo(parent.table, progress,text.getText())) {
+            if (StudentInfoManagment.findStudentInfo(parent.table, progress, text.getText())) {
                 //this.close();
             } else {
                 MessageBox.show("未找到该学生的信息！");

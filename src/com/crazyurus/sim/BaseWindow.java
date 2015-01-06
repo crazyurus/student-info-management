@@ -4,7 +4,9 @@ import java.awt.*;
 import java.awt.event.*;
 
 /**
+ * ´°Ìå»ùÀà
  *
+ * @version 1.0.0
  * @author Crazy Urus
  */
 abstract public class BaseWindow extends WindowAdapter implements ActionListener {
