@@ -1,46 +1,46 @@
-package com.crazyurus.sim;
+package cn.crazyurus.StudentInfoManagement;
 
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
 /**
- * ²éÕÒÑ§ÉúĞÅÏ¢¶Ô»°¿òÀà
+ * æŸ¥æ‰¾å­¦ç”Ÿä¿¡æ¯å¯¹è¯æ¡†ç±»
  *
  * @author Crazy Urus
  * @version 1.0.5
  */
 public class FindDialog extends BaseWindow implements ActionListener {
 
-    private final String[] btnText = {"²éÕÒ", "¹Ø±Õ"};
+    private final String[] btnText = {"æŸ¥æ‰¾", "å…³é—­"};
 
     private final JDialog dialog;
     private final MainFrame parent;
 
-    private final JLabel label = new JLabel("ÇëÊäÈëÑ§ÉúĞÕÃû£º");
+    private final JLabel label = new JLabel("è¯·è¾“å…¥å­¦ç”Ÿå§“åï¼š");
     private final JTextField text = new JTextField();
     private final JButton[] btn = new JButton[2];
     private final JProgressBar progress = new JProgressBar();
 
     /**
-     * ¹¹Ôìº¯Êı
+     * æ„é€ å‡½æ•°
      *
-     * @param main Ö÷´°Ìå¶ÔÏó
+     * @param main ä¸»çª—ä½“å¯¹è±¡
      */
     public FindDialog(MainFrame main) {
 
         this.parent = main;
 
-        /* ´´½¨¶Ô»°¿ò */
-        window = new JDialog(parent.frame, "²éÕÒÑ§ÉúĞÅÏ¢", false);
+        /* åˆ›å»ºå¯¹è¯æ¡† */
+        window = new JDialog(parent.frame, "æŸ¥æ‰¾å­¦ç”Ÿä¿¡æ¯", false);
         dialog = (JDialog) window;
 
-        /* ³õÊ¼»¯¶Ô»°¿ò */
+        /* åˆå§‹åŒ–å¯¹è¯æ¡† */
         dialog.setSize(260, 135);
         dialog.setLayout(new GridLayout(3, 1));
         this.init();
 
-        /* Ìí¼Ó¿Ø¼ş */
+        /* æ·»åŠ æ§ä»¶ */
         JPanel panel = new JPanel(new GridLayout(1, 2));
         panel.add(label);
         panel.add(text);
@@ -50,7 +50,7 @@ public class FindDialog extends BaseWindow implements ActionListener {
     }
 
     /**
-     * Ìí¼Ó°´Å¥
+     * æ·»åŠ æŒ‰é’®
      */
     private void addButton() {
         JPanel panel = new JPanel(new GridLayout(1, 2));
@@ -63,7 +63,7 @@ public class FindDialog extends BaseWindow implements ActionListener {
     }
 
     /**
-     * ³õÊ¼»¯½ø¶ÈÌõ
+     * åˆå§‹åŒ–è¿›åº¦æ¡
      */
     private void initProgress() {
         progress.setOrientation(JProgressBar.HORIZONTAL);
@@ -72,7 +72,7 @@ public class FindDialog extends BaseWindow implements ActionListener {
     }
 
     /**
-     * ¹Ø±Õ¶Ô»°¿ò
+     * å…³é—­å¯¹è¯æ¡†
      */
     @Override
     public void close() {
@@ -80,9 +80,9 @@ public class FindDialog extends BaseWindow implements ActionListener {
     }
 
     /**
-     * ÊÂ¼ş¼àÌı
+     * äº‹ä»¶ç›‘å¬
      *
-     * @param e ÊÂ¼ş
+     * @param e äº‹ä»¶
      */
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -95,28 +95,27 @@ public class FindDialog extends BaseWindow implements ActionListener {
     }
 
     /**
-     * ²éÕÒ°´Å¥µã»÷ÊÂ¼ş
+     * æŸ¥æ‰¾æŒ‰é’®ç‚¹å‡»äº‹ä»¶
      */
     private void findBtnClick() {
         if (isComplete()) {
             if (StudentInfoManagment.findStudentInfo(parent.table, progress, text.getText())) {
                 //this.close();
             } else {
-                MessageBox.show("Î´ÕÒµ½¸ÃÑ§ÉúµÄĞÅÏ¢£¡");
+                MessageBox.show("æœªæ‰¾åˆ°è¯¥å­¦ç”Ÿçš„ä¿¡æ¯ï¼");
             }
         } else {
-            MessageBox.show("Äã»¹Ã»ÓĞÊäÈëÑ§ÉúĞÕÃû£¡");
+            MessageBox.show("ä½ è¿˜æ²¡æœ‰è¾“å…¥å­¦ç”Ÿå§“åï¼");
         }
 
     }
 
     /**
-     * ÅĞ¶ÏÓĞĞ§ĞÔ
+     * åˆ¤æ–­æœ‰æ•ˆæ€§
      *
-     * @return ÊÇ·ñÌîĞ´ÍêÕû
+     * @return æ˜¯å¦å¡«å†™å®Œæ•´
      */
     private boolean isComplete() {
         return !text.getText().equals("");
     }
-
 }

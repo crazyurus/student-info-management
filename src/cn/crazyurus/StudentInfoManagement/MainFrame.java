@@ -1,29 +1,27 @@
-package com.crazyurus.sim;
+package cn.crazyurus.StudentInfoManagement;
 
 import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import javax.swing.*;
 import javax.swing.table.*;
 import javax.swing.filechooser.*;
 
 /**
- * Ö÷´°ÌåÀà
+ * ä¸»çª—ä½“ç±»
  *
  * @author Crazy Urus
  * @version 1.1.3
  */
 public final class MainFrame extends BaseWindow implements ActionListener {
 
-    private final String[] menuInfo = {"¹¦ÄÜ(F)", "¹ØÓÚ(A)"};
+    private final String[] menuInfo = {"åŠŸèƒ½(F)", "å…³äº(A)"};
     private final String[][] menuItemInfo = {
-        {"¼ÓÔØ(L)", "±£´æ(S)", "-", "Ìí¼ÓÑ§Éú(A)", "±à¼­(E)", "É¾³ı(D)", "Ë¢ĞÂ(R)",
-            "²éÕÒ(F)", "-", "ÍË³ö(E)"}, {"°ïÖú(H)", "¹ØÓÚ(A)"}};
-    private final String[] tableColumn = {"ĞòºÅ", "Ñ§ºÅ", "ĞÕÃû", "ĞÔ±ğ", "ÄêÁä", "ÊÖ»ú",
-        "E-mail", "Ñ§Ôº"};
+            {"åŠ è½½(L)", "ä¿å­˜(S)", "-", "æ·»åŠ å­¦ç”Ÿ(A)", "ç¼–è¾‘(E)", "åˆ é™¤(D)", "åˆ·æ–°(R)",
+                    "æŸ¥æ‰¾(F)", "-", "é€€å‡º(E)"}, {"å¸®åŠ©(H)", "å…³äº(A)"}};
+    private final String[] tableColumn = {"åºå·", "å­¦å·", "å§“å", "æ€§åˆ«", "å¹´é¾„", "æ‰‹æœº",
+            "E-mail", "å­¦é™¢"};
 
     public final JFrame frame;
     private final JMenuBar m_MenuBar = new JMenuBar();
@@ -33,28 +31,22 @@ public final class MainFrame extends BaseWindow implements ActionListener {
     private final JTable m_Table;
 
     /**
-     * ¹¹Ôìº¯Êı
+     * æ„é€ å‡½æ•°
      */
     public MainFrame() {
 
-        window = new JFrame("Ñ§ÉúĞÅÏ¢¹ÜÀíÏµÍ³");
+        window = new JFrame("å­¦ç”Ÿä¿¡æ¯ç®¡ç†ç³»ç»Ÿ");
         frame = (JFrame) window;
-        try {
-            javax.swing.UIManager
-                    .setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
-        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
-            Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null,
-                    ex);
-        }
+
         this.table = new DefaultTableModel(null, tableColumn) {
             private static final long serialVersionUID = 1L;
 
             /**
-             * ¿ØÖÆ±í¸ñÊÇ·ñ¿É±à¼­
+             * æ§åˆ¶è¡¨æ ¼æ˜¯å¦å¯ç¼–è¾‘
              *
-             * @param row ĞĞË÷Òı
-             * @param column ÁĞË÷Òı
-             * @return ÊÇ·ñ¿É±à¼­
+             * @param row è¡Œç´¢å¼•
+             * @param column åˆ—ç´¢å¼•
+             * @return æ˜¯å¦å¯ç¼–è¾‘
              */
             @Override
             public boolean isCellEditable(int row, int column) {
@@ -65,11 +57,11 @@ public final class MainFrame extends BaseWindow implements ActionListener {
         m_Table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         m_Table.setRowSorter(new TableRowSorter<>(table));
 
-        /* ¿Ø¼ş¶ÔÏó³õÊ¼»¯ */
+        /* æ§ä»¶å¯¹è±¡åˆå§‹åŒ– */
         this.initMenu();
         this.initTable();
 
-        /* Ö÷´°ÌåÎ»ÖÃ¡¢×ÖÌåÉèÖÃ */
+        /* ä¸»çª—ä½“ä½ç½®ã€å­—ä½“è®¾ç½® */
         frame.setSize(720, 540);
         frame.setLayout(new GridLayout(1, 1));
         frame.setJMenuBar(m_MenuBar);
@@ -78,7 +70,7 @@ public final class MainFrame extends BaseWindow implements ActionListener {
     }
 
     /**
-     * Ìí¼ÓÒ»¼¶²Ëµ¥Ïî
+     * æ·»åŠ ä¸€çº§èœå•é¡¹
      */
     private void initMenu() {
         int num = menuInfo.length;
@@ -90,9 +82,9 @@ public final class MainFrame extends BaseWindow implements ActionListener {
     }
 
     /**
-     * Ìí¼Ó¶ş¼¶²Ëµ¥Ïî
+     * æ·»åŠ äºŒçº§èœå•é¡¹
      *
-     * @param index Ò»¼¶²Ëµ¥±àºÅ
+     * @param index ä¸€çº§èœå•ç¼–å·
      */
     private void initMenuItem(int index) {
         int pre = 0;
@@ -113,7 +105,7 @@ public final class MainFrame extends BaseWindow implements ActionListener {
     }
 
     /**
-     * ³õÊ¼»¯ÁĞ±í
+     * åˆå§‹åŒ–åˆ—è¡¨
      */
     private void initTable() {
         JScrollPane jsc = new JScrollPane(m_Table);
@@ -121,94 +113,94 @@ public final class MainFrame extends BaseWindow implements ActionListener {
     }
 
     /**
-     * ÅĞ¶Ï±í¸ñÊÇ·ñÎª¿Õ
+     * åˆ¤æ–­è¡¨æ ¼æ˜¯å¦ä¸ºç©º
      *
-     * @return ÊÇ·ñÎª¿Õ
+     * @return æ˜¯å¦ä¸ºç©º
      */
     private boolean isEmpty() {
         return table.getRowCount() == 0;
     }
 
     /**
-     * ÅĞ¶Ï±í¸ñÊÇ·ñÓĞÑ¡ÖĞÏî
+     * åˆ¤æ–­è¡¨æ ¼æ˜¯å¦æœ‰é€‰ä¸­é¡¹
      *
-     * @return Ñ¡ÖĞÏîindex
+     * @return é€‰ä¸­é¡¹index
      */
     private int checkSelect() {
         int cur = m_Table.getSelectedRow();
         if (cur == -1) {
-            MessageBox.show("Ã»ÓĞÈÎºÎÑ§ÉúĞÅÏ¢±»Ñ¡ÖĞ£¡");
+            MessageBox.show("æ²¡æœ‰ä»»ä½•å­¦ç”Ÿä¿¡æ¯è¢«é€‰ä¸­");
         }
         return cur;
     }
 
     /**
-     * ¹Ø±Õ¶Ô»°¿ò
+     * å…³é—­å¯¹è¯æ¡†
      */
     @Override
     public void close() {
-        if (MessageBox.confirm("È·¶¨ÒªÍË³ö±¾ÏµÍ³Âğ£¿")) {
+        if (MessageBox.confirm("ç¡®å®šè¦é€€å‡ºæœ¬ç³»ç»Ÿå—ï¼Ÿ")) {
             System.exit(0);
         }
     }
 
     /**
-     * ÊÂ¼ş¼àÌı
+     * äº‹ä»¶ç›‘å¬
      *
-     * @param e ÊÂ¼ş
+     * @param e äº‹ä»¶
      */
     @Override
     public void actionPerformed(ActionEvent e) {
         Object o = e.getSource();
-        if (o == m_MenuItem[0]) { // ¼ÓÔØÊı¾İ
+        if (o == m_MenuItem[0]) { // åŠ è½½æ•°æ®
             this.loadMenuClick();
-        } else if (o == m_MenuItem[1]) { // ±£´æÊı¾İ
+        } else if (o == m_MenuItem[1]) { // ä¿å­˜æ•°æ®
             this.saveMenuClick();
-        } else if (o == m_MenuItem[3]) { // Ìí¼ÓÊı¾İ
+        } else if (o == m_MenuItem[3]) { // æ·»åŠ æ•°æ®
             this.addMenuClick();
-        } else if (o == m_MenuItem[4]) { // ±à¼­Êı¾İ
+        } else if (o == m_MenuItem[4]) { // ç¼–è¾‘æ•°æ®
             this.editMenuClick();
-        } else if (o == m_MenuItem[5]) { // É¾³ıÊı¾İ
+        } else if (o == m_MenuItem[5]) { // åˆ é™¤æ•°æ®
             this.deleteMenuClick();
-        } else if (o == m_MenuItem[6]) { // Ë¢ĞÂÊı¾İ
+        } else if (o == m_MenuItem[6]) { // åˆ·æ–°æ•°æ®
             this.showMenuClick();
-        } else if (o == m_MenuItem[7]) { // ²éÕÒÊı¾İ
+        } else if (o == m_MenuItem[7]) { // æŸ¥æ‰¾æ•°æ®
             this.findMenuClick();
-        } else if (o == m_MenuItem[9]) { // ÍË³ö
+        } else if (o == m_MenuItem[9]) { // é€€å‡º
             this.exitMenuClick();
-        } else if (o == m_MenuItem[10]) { // °ïÖú
-            MessageBox.show("ÔİÎŞ°ïÖú", "°ïÖú");
-        } else if (o == m_MenuItem[11]) { // ¹ØÓÚ
-            MessageBox.msg("Ñ§ÉúĞÅÏ¢¹ÜÀíÏµÍ³\nÈí¼ş¿ª·¢¹¤¾ß¿Î³ÌÉè¼Æ\n×÷Õß£ºÈí¼şzy1201  ÁÎĞÇ", "¹ØÓÚ");
+        } else if (o == m_MenuItem[10]) { // å¸®åŠ©
+            MessageBox.show("æš‚æ— å¸®åŠ©", "å¸®åŠ©");
+        } else if (o == m_MenuItem[11]) { // å…³äº
+            MessageBox.msg("å­¦ç”Ÿä¿¡æ¯ç®¡ç†ç³»ç»Ÿ\nè½¯ä»¶å¼€å‘å·¥å…·è¯¾ç¨‹è®¾è®¡\nä½œè€…ï¼šCrazy Urus", "å…³äº");
         }
     }
 
     private void loadMenuClick() {
         JFileChooser chooser = new JFileChooser();
-        chooser.setDialogTitle("Ñ¡ÔñÊı¾İÎÄ¼ş");
-        chooser.setApproveButtonText("¼ÓÔØ");
+        chooser.setDialogTitle("é€‰æ‹©æ•°æ®æ–‡ä»¶");
+        chooser.setApproveButtonText("åŠ è½½");
         chooser.setCurrentDirectory(new File("D:\\"));
-        chooser.setFileFilter(new FileNameExtensionFilter("Êı¾İÎÄ¼ş (*.data)",
+        chooser.setFileFilter(new FileNameExtensionFilter("æ•°æ®æ–‡ä»¶ (*.data)",
                 "data"));
         if (chooser.showOpenDialog(frame) == JFileChooser.APPROVE_OPTION) {
             try {
                 StudentInfoManagment.loadStudentInfo(chooser.getSelectedFile(),
                         table);
             } catch (IOException | ClassNotFoundException ex) {
-                MessageBox.show("¼ÓÔØÊı¾İÎÄ¼şÊ±³ö´í£¡");
+                MessageBox.show("åŠ è½½æ•°æ®æ–‡ä»¶æ—¶å‡ºé”™ï¼");
             }
         }
     }
 
     private void saveMenuClick() {
         if (this.isEmpty()) {
-            MessageBox.show("ÔİÎŞÑ§ÉúĞÅÏ¢¿É±£´æ£¡");
+            MessageBox.show("æš‚æ— å­¦ç”Ÿä¿¡æ¯å¯ä¿å­˜ï¼");
         } else {
             try {
                 StudentInfoManagment.saveStudentInfo();
-                MessageBox.show("Êı¾İ±£´æ³É¹¦£¡");
+                MessageBox.show("æ•°æ®ä¿å­˜æˆåŠŸï¼");
             } catch (IOException ex) {
-                MessageBox.show("±£´æÊı¾İÊ±³ö´í£¡");
+                MessageBox.show("ä¿å­˜æ•°æ®æ—¶å‡ºé”™ï¼");
             }
         }
 
@@ -233,7 +225,7 @@ public final class MainFrame extends BaseWindow implements ActionListener {
         int cur = checkSelect();
         if (cur != -1) {
             if (MessageBox
-                    .confirm("È·¶¨É¾³ı " + table.getValueAt(cur, 2) + " µÄĞÅÏ¢£¿")) {
+                    .confirm("ç¡®å®šåˆ é™¤ " + table.getValueAt(cur, 2) + " çš„ä¿¡æ¯ï¼Ÿ")) {
                 StudentInfoManagment.deleteStudentInfo(table, table.getValueAt(cur, 1)
                         .toString(), cur);
             }
@@ -246,7 +238,7 @@ public final class MainFrame extends BaseWindow implements ActionListener {
 
     private void findMenuClick() {
         if (this.isEmpty()) {
-            MessageBox.show("ÔİÎŞÑ§ÉúĞÅÏ¢¿É¹©²éÕÒ£¡");
+            MessageBox.show("æš‚æ— å­¦ç”Ÿä¿¡æ¯å¯ä¾›æŸ¥æ‰¾ï¼");
         } else {
             FindDialog d = new FindDialog(this);
             d.show();
@@ -256,5 +248,4 @@ public final class MainFrame extends BaseWindow implements ActionListener {
     private void exitMenuClick() {
         this.close();
     }
-
 }

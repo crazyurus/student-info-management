@@ -1,4 +1,4 @@
-package com.crazyurus.sim;
+package cn.crazyurus.StudentInfoManagement;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -6,22 +6,22 @@ import java.awt.event.*;
 import javax.swing.*;
 
 /**
- * Ìí¼ÓÑ§ÉúĞÅÏ¢¶Ô»°¿òÀà
+ * æ·»åŠ å­¦ç”Ÿä¿¡æ¯å¯¹è¯æ¡†ç±»
  *
  * @author Crazy Urus
  * @version 1.1.3
  */
 public class AddDialog extends BaseWindow implements ActionListener {
 
-    private final String[] labelText = {"Ñ§ºÅ", "ĞÕÃû", "µç»°", "E-mail", "ÄêÁä",
-        "Ñ§Ôº", "ĞÔ±ğ"};
-    private final String[] radioText = {"ÄĞ", "Å®"};
-    private final String[] btnText = {"null", "ÖØÖÃ", "¹Ø±Õ"};
-    private final String[] college = {"²ÄÁÏ¿ÆÑ§Óë¹¤³ÌÑ§Ôº", "½»Í¨Ñ§Ôº", "¹ÜÀíÑ§Ôº", "»úµç¹¤³ÌÑ§Ôº",
-        "ÄÜÔ´Óë¶¯Á¦¹¤³ÌÑ§Ôº", "ÍÁÄ¾¹¤³ÌÓë½¨ÖşÑ§Ôº", "Æû³µ¹¤³ÌÑ§Ôº", "×ÊÔ´Óë»·¾³¹¤³ÌÑ§Ôº", "ĞÅÏ¢¹¤³ÌÑ§Ôº",
-        "¼ÆËã»ú¿ÆÑ§Óë¼¼ÊõÑ§Ôº", "×Ô¶¯»¯Ñ§Ôº", "º½ÔËÑ§Ôº", "ÎïÁ÷¹¤³ÌÑ§Ôº", "ÀíÑ§Ôº", "»¯Ñ§»¯¹¤ÓëÉúÃü¿ÆÑ§Ñ§Ôº",
-        "¾­¼ÃÑ§Ôº", "ÒÕÊõÓëÉè¼ÆÑ§Ôº", "Íâ¹úÓïÑ§Ôº", "ÎÄ·¨Ñ§Ôº", "ÕşÖÎÓëĞĞÕşÑ§Ôº", "¹ú¼Ê½ÌÓıÑ§Ôº", "Âí¿ËË¼Ö÷ÒåÑ§Ôº",
-        "ÍøÂç/¼ÌĞø½ÌÓıÑ§Ôº", "Ö°Òµ¼¼ÊõÑ§Ôº", "ÌåÓı²¿"};
+    private final String[] labelText = {"å­¦å·", "å§“å", "ç”µè¯", "E-mail", "å¹´é¾„",
+            "å­¦é™¢", "æ€§åˆ«"};
+    private final String[] radioText = {"ç”·", "å¥³"};
+    private final String[] btnText = {"null", "é‡ç½®", "å…³é—­"};
+    private final String[] college = {"ææ–™ç§‘å­¦ä¸å·¥ç¨‹å­¦é™¢", "äº¤é€šå­¦é™¢", "ç®¡ç†å­¦é™¢", "æœºç”µå·¥ç¨‹å­¦é™¢",
+            "èƒ½æºä¸åŠ¨åŠ›å·¥ç¨‹å­¦é™¢", "åœŸæœ¨å·¥ç¨‹ä¸å»ºç­‘å­¦é™¢", "æ±½è½¦å·¥ç¨‹å­¦é™¢", "èµ„æºä¸ç¯å¢ƒå·¥ç¨‹å­¦é™¢", "ä¿¡æ¯å·¥ç¨‹å­¦é™¢",
+            "è®¡ç®—æœºç§‘å­¦ä¸æŠ€æœ¯å­¦é™¢", "è‡ªåŠ¨åŒ–å­¦é™¢", "èˆªè¿å­¦é™¢", "ç‰©æµå·¥ç¨‹å­¦é™¢", "ç†å­¦é™¢", "åŒ–å­¦åŒ–å·¥ä¸ç”Ÿå‘½ç§‘å­¦å­¦é™¢",
+            "ç»æµå­¦é™¢", "è‰ºæœ¯ä¸è®¾è®¡å­¦é™¢", "å¤–å›½è¯­å­¦é™¢", "æ–‡æ³•å­¦é™¢", "æ”¿æ²»ä¸è¡Œæ”¿å­¦é™¢", "å›½é™…æ•™è‚²å­¦é™¢", "é©¬å…‹æ€ä¸»ä¹‰å­¦é™¢",
+            "ç»§ç»­æ•™è‚²å­¦é™¢", "èŒä¸šæŠ€æœ¯å­¦é™¢", "ä½“è‚²éƒ¨"};
 
     private final JDialog dialog;
     private final MainFrame parent;
@@ -38,35 +38,35 @@ public class AddDialog extends BaseWindow implements ActionListener {
     private int index = 1;
 
     /**
-     * ¹¹Ôìº¯Êı
+     * æ„é€ å‡½æ•°
      *
-     * @param main Ö÷´°Ìå¶ÔÏó
+     * @param main ä¸»çª—ä½“å¯¹è±¡
      */
     public AddDialog(MainFrame main, int type) {
 
         this.parent = main;
 
-        /* ÉèÖÃ¶Ô»°¿òÀàĞÍ */
+        /* è®¾ç½®å¯¹è¯æ¡†ç±»å‹ */
         this.type = type;
         String dlgTitle = "";
         if (type == 1) {
-            btnText[0] = "Ìí¼Ó";
-            dlgTitle = "Ìí¼ÓÑ§ÉúĞÅÏ¢";
+            btnText[0] = "æ·»åŠ ";
+            dlgTitle = "æ·»åŠ å­¦ç”Ÿä¿¡æ¯";
         } else {
-            btnText[0] = "ĞŞ¸Ä";
-            dlgTitle = "ĞŞ¸ÄÑ§ÉúĞÅÏ¢";
+            btnText[0] = "ä¿®æ”¹";
+            dlgTitle = "ä¿®æ”¹å­¦ç”Ÿä¿¡æ¯";
         }
 
-        /* ´´½¨¶Ô»°¿ò */
+        /* åˆ›å»ºå¯¹è¯æ¡† */
         window = new JDialog(parent.frame, dlgTitle, false);
         dialog = (JDialog) window;
 
-        /* ³õÊ¼»¯¶Ô»°¿ò */
+        /* åˆå§‹åŒ–å¯¹è¯æ¡† */
         dialog.setSize(400, 270);
         dialog.setLayout(new GridLayout(8, 1));
         this.init();
 
-        /* Ìí¼Ó¿Ø¼ş */
+        /* æ·»åŠ æ§ä»¶ */
         this.addLabel();
         this.addSpinner();
         this.addCombo();
@@ -75,14 +75,14 @@ public class AddDialog extends BaseWindow implements ActionListener {
     }
 
     /**
-     * Ìí¼Ó±êÇ©
+     * æ·»åŠ æ ‡ç­¾
      */
     private void addLabel() {
         JPanel labelPanel;
         for (int i = 0; i < text.length; ++i) {
             text[i] = new JTextField();
             labelPanel = new JPanel(new GridLayout(1, 2));
-            labelPanel.add(new JLabel(labelText[i] + "£º"));
+            labelPanel.add(new JLabel(labelText[i] + "ï¼š"));
             labelPanel.add(text[i]);
             dialog.add(labelPanel);
         }
@@ -91,32 +91,32 @@ public class AddDialog extends BaseWindow implements ActionListener {
     }
 
     /**
-     * Ìí¼Ó×éºÏ¿ò
+     * æ·»åŠ ç»„åˆæ¡†
      */
     private void addCombo() {
         JPanel labelPanel = new JPanel(new GridLayout(1, 2));
-        labelPanel.add(new JLabel(labelText[labelText.length - 2] + "£º"));
+        labelPanel.add(new JLabel(labelText[labelText.length - 2] + "ï¼š"));
         labelPanel.add(combo);
         dialog.add(labelPanel);
     }
 
     /**
-     * Ìí¼ÓÎ¢µ÷¿ò
+     * æ·»åŠ å¾®è°ƒæ¡†
      */
     private void addSpinner() {
         JPanel labelPanel = new JPanel(new GridLayout(1, 2));
-        labelPanel.add(new JLabel(labelText[labelText.length - 3] + "£º"));
+        labelPanel.add(new JLabel(labelText[labelText.length - 3] + "ï¼š"));
         labelPanel.add(spinner);
         dialog.add(labelPanel);
     }
 
     /**
-     * Ìí¼Óµ¥Ñ¡¿ò
+     * æ·»åŠ å•é€‰æ¡†
      */
     private void addRadio() {
         JPanel radioPanel = new JPanel(new GridLayout(1, 2));
         JPanel labelPanel = new JPanel(new GridLayout(1, 2));
-        labelPanel.add(new JLabel(labelText[labelText.length - 1] + "£º"));
+        labelPanel.add(new JLabel(labelText[labelText.length - 1] + "ï¼š"));
         for (int i = 0; i < radio.length; ++i) {
             radio[i] = new JRadioButton(radioText[i], false);
             group.add(radio[i]);
@@ -127,7 +127,7 @@ public class AddDialog extends BaseWindow implements ActionListener {
     }
 
     /**
-     * Ìí¼Ó°´Å¥
+     * æ·»åŠ æŒ‰é’®
      */
     private void addButton() {
         JPanel btnPanel = new JPanel(new GridLayout(1, 3));
@@ -140,7 +140,7 @@ public class AddDialog extends BaseWindow implements ActionListener {
     }
 
     /**
-     * ¹Ø±Õ¶Ô»°¿ò
+     * å…³é—­å¯¹è¯æ¡†
      */
     @Override
     public void close() {
@@ -148,9 +148,9 @@ public class AddDialog extends BaseWindow implements ActionListener {
     }
 
     /**
-     * ÊÂ¼ş¼àÌı
+     * äº‹ä»¶ç›‘å¬
      *
-     * @param e ÊÂ¼ş
+     * @param e äº‹ä»¶
      */
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -165,7 +165,7 @@ public class AddDialog extends BaseWindow implements ActionListener {
     }
 
     /**
-     * Ìá½»°´Å¥µã»÷ÊÂ¼ş
+     * æäº¤æŒ‰é’®ç‚¹å‡»äº‹ä»¶
      */
     private void submitBtnClick() {
         if (isComplete()) {
@@ -185,12 +185,12 @@ public class AddDialog extends BaseWindow implements ActionListener {
                 this.close();
             }
         } else {
-            MessageBox.show("ÌîĞ´µÄĞÅÏ¢²»ÍêÕû£¡");
+            MessageBox.show("å¡«å†™çš„ä¿¡æ¯ä¸å®Œæ•´ï¼");
         }
     }
 
     /**
-     * ÖØÖÃ°´Å¥µã»÷ÊÂ¼ş
+     * é‡ç½®æŒ‰é’®ç‚¹å‡»äº‹ä»¶
      */
     private void resetBtnClick() {
         for (JTextField t : text) {
@@ -202,9 +202,9 @@ public class AddDialog extends BaseWindow implements ActionListener {
     }
 
     /**
-     * ÅĞ¶ÏÓĞĞ§ĞÔ
+     * åˆ¤æ–­æœ‰æ•ˆæ€§
      *
-     * @return ÊÇ·ñÌîĞ´ÍêÕû
+     * @return æ˜¯å¦å¡«å†™å®Œæ•´
      */
     private boolean isComplete() {
         return (radio[0].isSelected() || radio[1].isSelected())
@@ -225,9 +225,9 @@ public class AddDialog extends BaseWindow implements ActionListener {
     }
 
     /**
-     * Ğ´ÈëÑ§ÉúĞÅÏ¢
+     * å†™å…¥å­¦ç”Ÿä¿¡æ¯
      *
-     * @param Student Ñ§Éú
+     * @param Student å­¦ç”Ÿ
      *
      */
     public void setStudentInfo(Student s, int index) {
@@ -244,5 +244,4 @@ public class AddDialog extends BaseWindow implements ActionListener {
         }
         combo.setSelectedIndex(findCollege(s.getCollege()));
     }
-
 }

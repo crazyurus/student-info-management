@@ -1,9 +1,9 @@
-package com.crazyurus.sim;
+package cn.crazyurus.StudentInfoManagement;
 
 import javax.swing.text.*;
 
 /**
- * 输入限制类
+ * 脢盲脠毛脧脼脰脝脌脿
  *
  * @version 1.0.0
  * @author Crazy Urus

@@ -1,22 +1,22 @@
-package com.crazyurus.sim;
+package cn.crazyurus.StudentInfoManagement;
 
 import javax.swing.JOptionPane;
 
 /**
- * ĞÅÏ¢ÌáÊ¾¶Ô»°¿ò
+ * ä¿¡æ¯æç¤ºå¯¹è¯æ¡†
  *
  * @version 1.0.0
  * @author Crazy Urus
  */
 public final class MessageBox {
 
-    private final static String title = "Ñ§ÉúĞÅÏ¢¹ÜÀíÏµÍ³";
+    private final static String title = "å­¦ç”Ÿä¿¡æ¯ç®¡ç†ç³»ç»Ÿ";
 
     /**
-     * ÏÔÊ¾ÆÕÍ¨¶Ô»°¿ò
+     * æ˜¾ç¤ºæ™®é€šå¯¹è¯æ¡†
      *
-     * @param msg ÌáÊ¾ĞÅÏ¢
-     * @param title
+     * @param msg æç¤ºä¿¡æ¯
+     * @param title æç¤ºæ ‡é¢˜
      */
     public static void msg(String msg, String title) {
         JOptionPane.showMessageDialog(null, msg, title,
@@ -28,10 +28,10 @@ public final class MessageBox {
     }
 
     /**
-     * ÏÔÊ¾ÌáÊ¾¶Ô»°¿ò
+     * æ˜¾ç¤ºæç¤ºå¯¹è¯æ¡†
      *
-     * @param msg ÌáÊ¾ĞÅÏ¢
-     * @param title
+     * @param msg æç¤ºä¿¡æ¯
+     * @param title æç¤ºæ ‡é¢˜
      */
     public static void show(String msg, String title) {
         JOptionPane.showMessageDialog(null, msg, title,
@@ -43,11 +43,11 @@ public final class MessageBox {
     }
 
     /**
-     * ÏÔÊ¾È·ÈÏ¶Ô»°¿ò
+     * æ˜¾ç¤ºç¡®è®¤å¯¹è¯æ¡†
      *
-     * @param msg ÌáÊ¾ĞÅÏ¢
-     * @param title
-     * @return ×´Ì¬
+     * @param msg æç¤ºä¿¡æ¯
+     * @param title æç¤ºæ ‡é¢˜
+     * @return çŠ¶æ€
      */
     public static boolean confirm(String msg, String title) {
         return JOptionPane.showConfirmDialog(null, msg, title,
@@ -57,5 +57,4 @@ public final class MessageBox {
     public static boolean confirm(String msg) {
         return confirm(msg, MessageBox.title);
     }
-
 }

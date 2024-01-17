@@ -1,7 +1,6 @@
-package com.crazyurus.sim;
+package cn.crazyurus.StudentInfoManagement;
 
 /**
- * Ñ§ÉúÀà
  *
  * @author Crazy Urus
  * @version 1.0.0
@@ -14,7 +13,7 @@ public final class Student implements java.io.Serializable, Cloneable {
     private boolean isFemale;
 
     public Student(String sno, String name, int age, String phone,
-            String email, String college, boolean isFemale) {
+                   String email, String college, boolean isFemale) {
         set(sno, name, age, phone, email, college, isFemale);
     }
 
@@ -29,7 +28,7 @@ public final class Student implements java.io.Serializable, Cloneable {
     }
 
     public void set(String sno, String name, int age, String phone,
-            String email, String college, boolean isFemale) {
+                    String email, String college, boolean isFemale) {
         this.sno = sno;
         this.name = name;
         this.age = age;
@@ -68,11 +67,10 @@ public final class Student implements java.io.Serializable, Cloneable {
     }
 
     public String[] toStringArray(int index) {
-        String[] sex = {"ÄÐ", "Å®"};
+        String[] sex = {"ç”·", "å¥³"};
         String[] result = {String.valueOf(index), this.sno, this.name,
-            sex[this.isFemale ? 1 : 0], String.valueOf(this.age),
-            this.phone, this.email, this.college};
+                sex[this.isFemale ? 1 : 0], String.valueOf(this.age),
+                this.phone, this.email, this.college};
         return result;
     }
-
 }

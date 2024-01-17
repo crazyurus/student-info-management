@@ -1,4 +1,3 @@
-StudentInfoManagment
-====================
+# Student Info Management
 
 By Java Swing

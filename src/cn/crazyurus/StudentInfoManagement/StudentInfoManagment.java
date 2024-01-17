@@ -1,4 +1,5 @@
-package com.crazyurus.sim;
+package cn.crazyurus.StudentInfoManagement;
+
 
 import java.util.*;
 import java.io.*;
@@ -7,7 +8,7 @@ import javax.swing.JProgressBar;
 import javax.swing.table.DefaultTableModel;
 
 /**
- * Ñ§ÉúĞÅÏ¢¹ÜÀíÀà
+ * å­¦ç”Ÿä¿¡æ¯ç®¡ç†ç±»
  *
  * @author Crazy Urus
  * @version 1.1.0
@@ -18,10 +19,10 @@ public final class StudentInfoManagment {
     private static File file = new File("D:\\myfile.data");
 
     /**
-     * ´ÓÎÄ¼ş¼ÓÔØÑ§ÉúĞÅÏ¢
+     * ä»æ–‡ä»¶åŠ è½½å­¦ç”Ÿä¿¡æ¯
      *
-     * @param file ÎÄ¼ş
-     * @param l ±í¸ñ¿Ø¼ş
+     * @param file æ–‡ä»¶
+     * @param l è¡¨æ ¼æ§ä»¶
      * @throws java.io.FileNotFoundException
      * @throws java.io.IOException
      * @throws java.lang.ClassNotFoundException
@@ -45,7 +46,7 @@ public final class StudentInfoManagment {
     }
 
     /**
-     * ±£´æÑ§ÉúĞÅÏ¢µ½ÎÄ¼ş
+     * ä¿å­˜å­¦ç”Ÿä¿¡æ¯åˆ°æ–‡ä»¶
      *
      * @throws java.io.FileNotFoundException
      * @throws java.io.IOException
@@ -61,9 +62,9 @@ public final class StudentInfoManagment {
     }
 
     /**
-     * É¾³ıÑ§ÉúĞÅÏ¢
+     * åˆ é™¤å­¦ç”Ÿä¿¡æ¯
      *
-     * @param sno Ñ§ºÅ
+     * @param sno å­¦å·
      */
     public static void deleteStudentInfo(String sno) {
         s.remove(sno);
@@ -75,9 +76,9 @@ public final class StudentInfoManagment {
     }
 
     /**
-     * Çå³ıÁĞ±íÖĞÏÔÊ¾µÄĞÅÏ¢
+     * æ¸…é™¤åˆ—è¡¨ä¸­æ˜¾ç¤ºçš„ä¿¡æ¯
      *
-     * @param l ÁĞ±í×é
+     * @param l åˆ—è¡¨ç»„
      */
     public static void clearStudentInfo(DefaultTableModel l) {
         int num = l.getRowCount();
@@ -87,9 +88,9 @@ public final class StudentInfoManagment {
     }
 
     /**
-     * ÔÚÁĞ±íÖĞÏÔÊ¾Ñ§ÉúĞÅÏ¢
+     * åœ¨åˆ—è¡¨ä¸­æ˜¾ç¤ºå­¦ç”Ÿä¿¡æ¯
      *
-     * @param l ±í¸ñ¿Ø¼ş
+     * @param l è¡¨æ ¼æ§ä»¶
      */
     public static void showStudentInfo(DefaultTableModel l) {
         clearStudentInfo(l);
@@ -100,10 +101,10 @@ public final class StudentInfoManagment {
     }
 
     /**
-     * Ìí¼ÓÑ§ÉúĞÅÏ¢
+     * æ·»åŠ å­¦ç”Ÿä¿¡æ¯
      *
-     * @param l ±í¸ñ¿Ø¼ş
-     * @param e Ñ§Éú
+     * @param l è¡¨æ ¼æ§ä»¶
+     * @param e å­¦ç”Ÿ
      */
     public static void addStudentInfo(DefaultTableModel l, Student e) {
         s.put(e.getSNO(), e);
@@ -111,25 +112,25 @@ public final class StudentInfoManagment {
     }
 
     /**
-     * »ñÈ¡Ñ§ÉúĞÅÏ¢
+     * è·å–å­¦ç”Ÿä¿¡æ¯
      *
-     * @param e Ñ§ÉúÑ§ºÅ
-     * @return Ñ§Éú
+     * @param e å­¦ç”Ÿå­¦å·
+     * @return å­¦ç”Ÿ
      */
     public static Student getStudentInfo(String sno) {
         return s.get(sno);
     }
 
     /**
-     * ²éÕÒÑ§ÉúĞÅÏ¢
+     * æŸ¥æ‰¾å­¦ç”Ÿä¿¡æ¯
      *
-     * @param l ±í¸ñ¿Ø¼ş
-     * @param p ½ø¶ÈÌõ¿Ø¼ş
-     * @param name ĞÕÃû
-     * @return ÊÇ·ñÕÒµ½
+     * @param l è¡¨æ ¼æ§ä»¶
+     * @param p è¿›åº¦æ¡æ§ä»¶
+     * @param name å§“å
+     * @return æ˜¯å¦æ‰¾åˆ°
      */
     public static boolean findStudentInfo(DefaultTableModel l, JProgressBar p,
-            String name) {
+                                          String name) {
         boolean isFind = false;
         int i = 1;
         p.setMinimum(0);
@@ -148,14 +149,13 @@ public final class StudentInfoManagment {
     }
 
     /**
-     * ÏòÁĞ±íÌí¼Óµ¥¸öÑ§ÉúĞÅÏ¢
+     * å‘åˆ—è¡¨æ·»åŠ å•ä¸ªå­¦ç”Ÿä¿¡æ¯
      *
-     * @param l ±í¸ñ¿Ø¼ş
-     * @param e Ñ§Éú
+     * @param l è¡¨æ ¼æ§ä»¶
+     * @param e å­¦ç”Ÿ
      */
     private static void showSingle(DefaultTableModel l, Student e) {
         int index = l.getRowCount();
         l.addRow(e.toStringArray(index + 1));
     }
-
 }

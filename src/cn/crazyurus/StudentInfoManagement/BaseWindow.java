@@ -1,10 +1,10 @@
-package com.crazyurus.sim;
+package cn.crazyurus.StudentInfoManagement;
 
 import java.awt.*;
 import java.awt.event.*;
 
 /**
- * ´°Ìå»ùÀà
+ * çª—ä½“åŸºç±»
  *
  * @version 1.0.0
  * @author Crazy Urus
@@ -20,36 +20,36 @@ abstract public class BaseWindow extends WindowAdapter implements ActionListener
     }
 
     /**
-     * ÏÔÊ¾Ö÷´°Ìå
+     * æ˜¾ç¤ºä¸»çª—ä½“
      */
     public void show() {
         window.setVisible(true);
     }
 
     /**
-     * Òş²ØÖ÷´°Ìå
+     * éšè—ä¸»çª—ä½“
      */
     public void hide() {
         window.setVisible(false);
     }
 
     /**
-     * ¹Ø±Õ
+     * å…³é—­
      */
     abstract public void close();
 
     /**
-     * ÊÂ¼ş¼àÌı
+     * äº‹ä»¶ç›‘å¬
      *
-     * @param e ÊÂ¼ş
+     * @param e äº‹ä»¶
      */
     @Override
     abstract public void actionPerformed(ActionEvent e);
 
     /**
-     * ÏµÍ³¹Ø±ÕÊÂ¼ş
+     * ç³»ç»Ÿå…³é—­äº‹ä»¶
      *
-     * @param e ÊÂ¼ş
+     * @param e äº‹ä»¶
      */
     @Override
     public void windowClosing(WindowEvent e) {

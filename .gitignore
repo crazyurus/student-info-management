@@ -61,3 +61,6 @@ $RECYCLE.BIN/
 /nbproject
 /build
 /dist/
+
+*.iml
+.idea
